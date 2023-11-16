@@ -43,11 +43,13 @@ export default {
 
       try {
         // Make a POST request to your server's login endpoint
-        const response = await axios.post('http://localhost:3000/auth/login', data);
+        const response = await axios.post('http://localhost:3000/auth/signin', data);
+          console.log('response', response);
 
-        if (response.status === 200) {
+        if (response.status === 201) {
           // Authentication was successful, you can redirect the user or perform other actions
-          localStorage.setItem('token', response.data.token);
+          
+          localStorage.setItem('token', 'Bearer ' + response.data.accessToken);
           router.push({ name: 'UserPage' })
         } else {
           // Handle login errors, e.g., show an error message

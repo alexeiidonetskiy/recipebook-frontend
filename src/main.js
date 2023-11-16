@@ -12,8 +12,11 @@ import { createApp } from 'vue'
 
 // Plugins
 import { registerPlugins } from '@/plugins'
+// import axios from '@/plugins/axios';
 
 const app = createApp(App)
+
+// app.config.globalProperties.$api = axios;
 
 registerPlugins(app)
 

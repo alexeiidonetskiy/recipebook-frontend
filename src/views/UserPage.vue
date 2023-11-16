@@ -18,6 +18,11 @@
         label="Description"
         required
       ></v-textarea>
+      <v-file-input
+        v-model="recipe.image"
+        label="Recipe Image"
+        accept="image/*"
+      ></v-file-input>
       <v-btn type="submit" color="primary">Create Recipe</v-btn>
     </v-form>
   </v-container>
@@ -41,18 +46,20 @@ export default {
     }
 
     const createRecipe = async () => {
+      const formData = new FormData();
+      formData.append('title', recipe.value.title);
+      formData.append('description', recipe.value.description);
+      formData.append('image', recipe.value.image[0]);
+      
+
       // Prepare the data for the POST request
-      const data = { 
-        title: recipe.value.title,
-        description: recipe.value.description,
-      };
       try {
         const token = localStorage.getItem("token");
         console.log("token", token);
 
         const response = await axios.post(
-          "http://localhost:3000/recepies",
-          data,
+          "http://localhost:3000/recipes",
+          formData,
           {
             headers: { Authorization: token },
           }
