@@ -43,7 +43,7 @@ export default {
 
       try {
         // Make a POST request to your server's login endpoint
-        const response = await axios.post('http://localhost:3000/auth/signin', data);
+        const response = await axios.post(`${process.env.API_URL}/auth/signin`, data);
           console.log('response', response);
 
         if (response.status === 201) {

@@ -30,7 +30,7 @@ export default {
     const registerUser = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/auth/signup", // Replace with your API endpoint
+          `${process.env.API_URL}/auth/signup`, // Replace with your API endpoint
           userData.value
         );
 

@@ -40,7 +40,7 @@ export default {
 
     const fetchRecipes = async () => {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:3000/recipes", {
+      const response = await fetch(`${process.env.API_URL}/recipes`, {
         headers: { Authorization: token },
       });
       const data = await response.json();
@@ -53,7 +53,7 @@ export default {
     const handleDeleteRecipe = async (recipeId) => {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:3000/recipes/${recipeId}`,
+        `${process.env.API_URL}/recipes/${recipeId}`,
         {
           method: "DELETE",
           headers: {

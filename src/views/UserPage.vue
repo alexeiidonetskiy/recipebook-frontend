@@ -58,7 +58,7 @@ export default {
         console.log("token", token);
 
         const response = await axios.post(
-          "http://localhost:3000/recipes",
+          `${process.env.API_URL}/recipes`,
           formData,
           {
             headers: { Authorization: token },

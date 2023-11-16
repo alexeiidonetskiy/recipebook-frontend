@@ -7,6 +7,9 @@ import ViteFonts from 'unplugin-fonts/vite'
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -29,7 +32,9 @@ export default defineConfig({
       },
     }),
   ],
-  define: { 'process.env': {} },
+  define: { 
+    'process.env.API_URL': JSON.stringify(process.env.API_URL),
+   },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
